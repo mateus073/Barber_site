@@ -1,0 +1,3 @@
+/*componente de card padrao
+apenas cria um card com formato e padding igual 
+*/

@@ -1,6 +1,11 @@
+import { Main } from "next/document";
+import { Home } from "./components/home";
+
 
 const Page = () => {
-  return <h1>Welcome to the Home Page</h1>;
+  return (
+   <Home />
+  );
 };
 
 export default Page;
