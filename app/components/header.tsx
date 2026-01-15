@@ -32,7 +32,7 @@ export const Header = ({ age, customers, assessment }: Props) => {
       {/* Conteúdo */}
       <div className="relative z-10 flex h-full flex-col justify-center gap-6 px-6 md:px-20 max-w-3xl">
         
-        <span className="inline-block w-fit rounded-full bg-[#F28705]/20 px-4 py-1 text-sm font-semibold text-[#F28705]">
+        <span className="inline-block w-fit rounded-full bg-[#F28705]/20 px-5 py-2 border border-solid border-[#F28705] text-sm font-semibold text-[#F28705]">
           +{age} anos de tradição
         </span>
 

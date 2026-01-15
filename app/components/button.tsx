@@ -6,7 +6,7 @@ export const Button = ({
   color,
   text
 }: {
-  color: 'laranja' | 'branco';
+  color: 'laranja' | 'branco' | 'cinza';
   text: string;
 }) => {
   return (
@@ -19,7 +19,9 @@ export const Button = ({
         ${
           color === 'laranja'
             ? 'bg-[#F28705] text-white hover:bg-[#d97706]'
-            : 'bg-white text-black hover:bg-gray-100'
+            : color === 'cinza'
+            ? 'bg-[#1E1E1E] text-white hover:bg-[#F28705]'
+            : 'bg-white text-[#F28705] hover:bg-gray-100'
         }
       `}
     >

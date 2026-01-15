@@ -1,30 +1,60 @@
+import { title } from "process";
+import { text } from "stream/consumers";
+
 export const barbershopMock = {
   id: 'barbearia-001',
   name: 'Barbearia Alpha',
   createdAt: '2018-06-10',
 
   about: {
-    description: 'Tradição, estilo e qualidade há mais de 6 anos.',
-    highlights: [
-      'Profissionais certificados',
-      'Ambiente climatizado',
-      'Atendimento personalizado'
+    description: {
+      title: 'tradiçao que se renova a cada corte',
+      text: 'Desde 2015, somos referência em cuidado masculino na região. Nascemos do sonho de resgatar a essência da barbearia clássica, onde cada cliente é tratado com atenção especial e cada corte é feito com maestria. Nossa equipe é formada por profissionais apaixonados e altamente qualificados. Somos atualizados com as últimas tendências, mas sem perder o toque artesanal que nos diferencia.'
+    },
+    infoCards: [
+      { title: 'execelencia', text: 'Atendimento de primeira' },
+      { title: 'qualidade', text: 'Produtos premium' },
+      { title: 'pontualidade', text: 'Respeito ao seu tempo' }
     ]
   },
 
   services: [
     {
       id: 'corte',
-      name: 'Corte de cabelo',
-      price: 40,
-      duration: 30
+      title: 'Corte de cabelo',
+      text: 'Corte moderno ou clássico, adaptado ao seu estilo e formato de rosto.',
+      price: 60,
+      duration: 45,
+      beneficios: ['labagem relaxante', 'toalha quente', 'finalização com produtos premium'],
+      mostPopular: false
     },
     {
       id: 'barba',
-      name: 'Barba',
+      title: 'Barba Completa',
+      text: 'aparar, modelar e finalizar com produtos premium para deixar sua barba inpecavel.',
       price: 30,
-      duration: 20
-    }
+      duration: 45,
+      beneficios: ['oleos especiais', 'toalha quente', 'finalização com produtos premium'],
+      mostPopular: false
+    },
+    {
+      id: 'corteBarba',
+      title: 'Corte de cabelo + barba',
+      text: 'Combo completo pra voce sair renovado e com estilo.',
+      price: 90,
+      duration: 60,
+      beneficios: ['corte', 'barba', 'relaxamento'],
+      mostPopular: true
+    },
+    {
+      id: 'tratamentosEspeciais',
+      title: 'Tratamentos Especiais',
+      text: 'Hidratação, coloração, luzes e outros serviços premium para cuidado total.',
+      price: 120,
+      duration: 'variavel',
+      beneficios: ['hidratação capilar', 'coloração', 'platinado'],
+      mostPopular: false
+    },
   ],
 
   schedule: {
