@@ -133,13 +133,21 @@ export const barbershopMock = {
   ],
 
   contacts: {
-    phone: '11999999999',
-    whatsapp: '11999999999',
-    email: 'contato@barbearia.com',
+    contato: {
+      phone: '11999999999',
+      whatsapp: '11999999999',
+      email: 'contato@barbearia.com',
+    },
     address: {
-      street: 'Rua X',
-      number: '123',
-      city: 'São Paulo'
+      street: 'Avenida Paulista',
+      number: '1000',
+      city: 'São Paulo',
+      state: 'SP',
+      cep: '01310-100'
+    },
+    openingHours: {
+      weekdays: '09:00 - 19:00',
+      weekends: '10:00 - 16:00'
     }
   }
 };

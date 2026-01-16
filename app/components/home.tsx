@@ -2,8 +2,11 @@
 // pagina de main onde ficaram os componentes principais da pagina inicial
 
 import { barbershopMock } from "../mocks/mock"
+import { ContactsType } from "../types/contactsType"
 import { ServiceType } from "../types/servicesType"
 import { WhoWeAreType } from "../types/whoWeAreType"
+import { ContactLocation } from "./contactLocation"
+import { Footer } from "./footer"
 // import { ReviewsType } from "../types/reviewsType"
 import { Header } from "./header"
 import { Reviews } from "./reviews"
@@ -14,6 +17,7 @@ export const Home = () => {
 
     const mockBarber = barbershopMock
 
+    // FUNÇOES - FUNÇOES - FUNÇOES
     // funcao pra obter a idade da barbearia 
     const getBarberAge = (createdAt: string) => {
         const createdDate = new Date(createdAt)
@@ -29,7 +33,6 @@ export const Home = () => {
         return age
     }
 
-
     // funcao para calcular a avaliaçao media
     const getAverageRating = (reviews: any[]) => {
         if (reviews.length === 0) return 0;
@@ -38,20 +41,23 @@ export const Home = () => {
         return parseFloat(averageRating.toFixed(1));
     }
 
-
-    // funcao pra pegar os 4 avaliçaoes mais recentes
+    // funcao pra selecionar as 4 avaliçaoes mais recentes
     const getRecentReviews = (reviews: any[],) => {
         const sortedReviews = reviews.sort((a, b) => new Date(b.publicationDate).getTime() - new Date(a.publicationDate).getTime());
         return sortedReviews.slice(0, 4);
     }
 
+
+
+
+
+    // DADOS - DADOS - DADOS - DADOS - DADOS - DADOS
     // data de headers 
     const headerData = {
         age: getBarberAge(mockBarber.createdAt),
         customers: mockBarber.reviews.length,
         assessment: getAverageRating(mockBarber.reviews)
     }
-
 
     // data da sessao sobre nois
     const WhoWeAreData: WhoWeAreType = {
@@ -60,12 +66,10 @@ export const Home = () => {
         cards: mockBarber.about.infoCards
     }
 
-
-    // data da seçao serviçoes 
+    // data da sessao serviçoes 
     const servicesData: ServiceType[] = mockBarber.services
 
-
-    // data da seçao de avaliçaoes
+    // data da sessao de avaliçaoes
     const reviewsData = {
         satisfiedCustomers: mockBarber.reviews.length,
         averageRating: getAverageRating(mockBarber.reviews),
@@ -74,7 +78,10 @@ export const Home = () => {
         reviews: mockBarber.reviews
     }
 
-
+    // data da sessao de contato e localizaçao
+    const contactsData: ContactsType = {
+        contacts: mockBarber.contacts
+    }
 
 
     return (
@@ -83,6 +90,8 @@ export const Home = () => {
             <WhoWeAre whoWeAreData={WhoWeAreData} />
             <Services servicesData={servicesData} />
             <Reviews satisfiedCustomers={reviewsData.satisfiedCustomers} averageRating={reviewsData.averageRating} customersReturning={reviewsData.customersReturning} ageBarber={reviewsData.ageBarber} reviews={getRecentReviews(reviewsData.reviews)} />
+            <ContactLocation contactsData={contactsData} />
+            <Footer />
         </main>
     )
 }
