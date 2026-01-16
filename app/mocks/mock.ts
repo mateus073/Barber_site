@@ -69,11 +69,58 @@ export const barbershopMock = {
   reviews: [
     {
       id: 'r1',
-      clientName: 'Carlos',
+      clientName: 'Carlos Silva',
+      profession: 'Empresário',
+      photo: '/imgs/avatar.jpg',
       rating: 5,
-      comment: 'Excelente atendimento',
-      createdAt: '2025-12-10'
-    }
+      comment: 'Excelente atendimento! Profissional muito atencioso e preciso no corte. Voltarei com certeza!',
+      publicationDate: '2024-01-15'
+    },
+    {
+      id: 'r2',
+      clientName: 'Lucas Oliveira',
+      profession: 'Designer',
+      photo: '/imgs/avatar.jpg',
+      rating: 5,
+      comment: 'Melhor barbearia da região! A qualidade dos produtos é notável e o ambiente muito acolhedor.',
+      publicationDate: '2024-01-10'
+    },
+    {
+      id: 'r3',
+      clientName: 'Miguel Santos',
+      profession: 'Desenvolvedor',
+      photo: '/imgs/avatar.jpg',
+      rating: 4,
+      comment: 'Bom serviço, profissionais competentes. Único ponto é o tempo de espera nos finais de semana.',
+      publicationDate: '2024-01-08'
+    },
+    {
+      id: 'r4',
+      clientName: 'Rafael Costa',
+      profession: 'Advogado',
+      photo: '/imgs/avatar.jpg',
+      rating: 5,
+      comment: 'Perfeito! O corte com barba ficou impecável. Respeito ao horário agendado. Recomendo!',
+      publicationDate: '2024-01-05'
+    },
+    {
+      id: 'r5',
+      clientName: 'Bruno Ferreira',
+      profession: 'Médico',
+      photo: '/imgs/avatar.jpg',
+      rating: 4,
+      comment: 'Ótima experiência. O profissional conhece as tendências atuais e adapta bem ao rosto do cliente.',
+      publicationDate: '2024-01-02'
+    },
+    {
+      id: 'r6',
+      clientName: 'André Martins',
+      profession: 'Atleta',
+      photo: '/imgs/avatar.jpg',
+      rating: 5,
+      comment: 'Voltei diversos times! Ambiente limpo, profissionais qualificados e resultado impecável sempre.',
+      publicationDate: '2023-12-28'
+    },
   ],
 
   clients: [

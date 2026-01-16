@@ -13,16 +13,15 @@ recebe por props :
 - O que muda dinamicamente?
 - nada */
 
+import { HeaderType } from "../types/headerType";
 import { Button } from "./button"
 
 
 type Props = {
-  age: number;
-  customers: number;
-  assessment: number;
+ headerData: HeaderType
 };
 
-export const Header = ({ age, customers, assessment }: Props) => {
+export const Header = ({ headerData }: Props) => {
   return (
     <section className="relative h-[600px] w-full bg-[url('/imgs/header.jpg')] bg-cover bg-center">
       
@@ -33,7 +32,7 @@ export const Header = ({ age, customers, assessment }: Props) => {
       <div className="relative z-10 flex h-full flex-col justify-center gap-6 px-6 md:px-20 max-w-3xl">
         
         <span className="inline-block w-fit rounded-full bg-[#F28705]/20 px-5 py-2 border border-solid border-[#F28705] text-sm font-semibold text-[#F28705]">
-          +{age} anos de tradição
+          +{headerData.age} anos de tradição
         </span>
 
         <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight">
@@ -54,7 +53,7 @@ export const Header = ({ age, customers, assessment }: Props) => {
         <div className="mt-8 flex gap-8">
           <div className="flex flex-col">
             <span className="text-3xl font-bold text-[#F28705]">
-              {age}+
+              {headerData.age}+
             </span>
             <span className="text-sm text-gray-300">
               anos
@@ -63,7 +62,7 @@ export const Header = ({ age, customers, assessment }: Props) => {
 
           <div className="flex flex-col">
             <span className="text-3xl font-bold text-[#F28705]">
-              {customers}K+
+              {headerData.customers}K+
             </span>
             <span className="text-sm text-gray-300">
               clientes
@@ -72,7 +71,7 @@ export const Header = ({ age, customers, assessment }: Props) => {
 
           <div className="flex flex-col">
             <span className="text-3xl font-bold text-[#F28705]">
-              {assessment}★
+              {headerData.assessment}★
             </span>
             <span className="text-sm text-gray-300">
               avaliação
