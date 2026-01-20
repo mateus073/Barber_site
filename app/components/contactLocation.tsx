@@ -1,18 +1,17 @@
-import { ContactsType } from "../types/contactsType"
+import { ContactTLocationType } from "../types/contactLocationType"
 import { Button } from "./button"
 import { CardStandard } from "./cardStandard"
 
 type Props = {
-    contactsData: ContactsType
+    contactLocationData: ContactTLocationType
 }
 
-export const ContactLocation = ({ contactsData }: Props) => {
+export const ContactLocation = ({ contactLocationData }: Props) => {
 
     return (
         <section className="w-full bg-black py-20 px-6">
             <div className="max-w-7xl mx-auto flex flex-col items-center gap-14">
 
-                {/* HEADER */}
                 <div className="text-center max-w-2xl">
                     <span className="inline-block w-fit rounded-full bg-[#F28705]/20 px-5 py-2 mb-10 text-lg border border-solid border-[#F28705] font-semibold text-[#F28705]">
                         Contato e Localização
@@ -27,9 +26,8 @@ export const ContactLocation = ({ contactsData }: Props) => {
                     </p>
                 </div>
 
-                {/* cards */}
+                
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
-                    {/* card do endereço */}
                     <CardStandard>
                         <div className="flex flex-col h-full p-3 text-left">
                             <div className="flex flex-col gap-7">
@@ -41,17 +39,17 @@ export const ContactLocation = ({ contactsData }: Props) => {
 
                                 <div>
                                     <p className="text-sm text-gray-400">
-                                        {contactsData.contacts.address.street},{" "}
-                                        {contactsData.contacts.address.number}
+                                        {contactLocationData.contacts.address.street},{" "}
+                                        {contactLocationData.contacts.address.number}
                                     </p>
 
                                     <p className="text-sm text-gray-400">
-                                        {contactsData.contacts.address.city} -{" "}
-                                        {contactsData.contacts.address.state}
+                                        {contactLocationData.contacts.address.city} -{" "}
+                                        {contactLocationData.contacts.address.state}
                                     </p>
 
                                     <p className="text-sm text-gray-400">
-                                        CEP {contactsData.contacts.address.cep}
+                                        CEP {contactLocationData.contacts.address.cep}
                                     </p>
                                 </div>
 
@@ -62,7 +60,6 @@ export const ContactLocation = ({ contactsData }: Props) => {
                         </div>
                     </CardStandard>
 
-                    {/* card do telefone */}
                     <CardStandard>
                         <div className="flex flex-col h-full p-3 text-left">
                             <div className="flex flex-col gap-6">
@@ -73,7 +70,7 @@ export const ContactLocation = ({ contactsData }: Props) => {
                                 </h3>
 
                                 <p className="text-sm text-gray-300">
-                                    {contactsData.contacts.contato.whatsapp}
+                                    {contactLocationData.contacts.contato.whatsapp}
                                 </p>
 
                                 <p className="text-xs text-gray-400">
@@ -81,7 +78,6 @@ export const ContactLocation = ({ contactsData }: Props) => {
                                 </p>
                             </div>
 
-                            {/* BOTÃO SEMPRE NO FINAL */}
                             <button className="mt-auto text-sm text-[#F28705] hover:underline w-fit">
                                 Ligar agora →
                             </button>
@@ -89,7 +85,6 @@ export const ContactLocation = ({ contactsData }: Props) => {
                     </CardStandard>
 
 
-                    {/* card de horario */}
                     <CardStandard>
                         <div className="flex flex-col h-full p-3 text-left">
                             <div className="flex flex-col gap-6">
@@ -101,12 +96,12 @@ export const ContactLocation = ({ contactsData }: Props) => {
 
                                 <div className="flex justify-between text-sm text-gray-400">
                                     <span>Seg - Sex:</span>
-                                    <span className="text-white">{contactsData.contacts.openingHours.weekdays}</span>
+                                    <span className="text-white">{contactLocationData.contacts.openingHours.weekdays}</span>
                                 </div>
 
                                 <div className="flex justify-between text-sm text-gray-400">
                                     <span>Sábado:</span>
-                                    <span className="text-white">{contactsData.contacts.openingHours.weekends}</span>
+                                    <span className="text-white">{contactLocationData.contacts.openingHours.weekends}</span>
                                 </div>
 
                                 <div className="flex justify-between text-sm text-gray-400">
@@ -119,7 +114,6 @@ export const ContactLocation = ({ contactsData }: Props) => {
                 </div>
 
 
-            {/* div laranja de "agenda pelo whatsapp" */}
                 <div className=" max-w-4xl bg-gradient-to-r from-[#F28705] to-[#CD5E01] rounded-2xl p-12 flex flex-col items-center text-center gap-6">
                     <img
                         src="/imgs/calendario.png"

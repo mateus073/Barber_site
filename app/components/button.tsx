@@ -1,7 +1,5 @@
 // componente padrao de botao
-/*
-quando ele for chamado recebe uma string q e laranja ou branco pra saber qual a configuraçao de cor dele
-*/
+
 export const Button = ({
   color,
   text

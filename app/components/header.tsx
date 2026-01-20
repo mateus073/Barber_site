@@ -1,24 +1,9 @@
-/*exibe info simples de cabeclaho com img de fundo e botao de agendamento 
-
-recebe por props : 
-
-- numero que indica a idade da barbearia
-- clientes satisfeitos
-- avaliacao
-
- 
-
-- O que e clicavel?
-    - botao de agendamento
-- O que muda dinamicamente?
-- nada */
-
-import { HeaderType } from "../types/headerType";
+import { HeaderDataType } from "../types/headerDataType";
 import { Button } from "./button"
 
 
 type Props = {
- headerData: HeaderType
+ headerData: HeaderDataType
 };
 
 export const Header = ({ headerData }: Props) => {

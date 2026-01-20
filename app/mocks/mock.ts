@@ -1,7 +1,8 @@
-import { title } from "process";
-import { text } from "stream/consumers";
+import { BarberShopType } from "../types/BarberShopType";
+import { ClientsDataType } from "../types/ClientsDataType";
 
-export const barbershopMock = {
+// dados relacionados a barbearia
+export const barberShopData: BarberShopType = {
   id: 'barbearia-001',
   name: 'Barbearia Alpha',
   createdAt: '2018-06-10',
@@ -11,11 +12,38 @@ export const barbershopMock = {
       title: 'tradiçao que se renova a cada corte',
       text: 'Desde 2015, somos referência em cuidado masculino na região. Nascemos do sonho de resgatar a essência da barbearia clássica, onde cada cliente é tratado com atenção especial e cada corte é feito com maestria. Nossa equipe é formada por profissionais apaixonados e altamente qualificados. Somos atualizados com as últimas tendências, mas sem perder o toque artesanal que nos diferencia.'
     },
+
     infoCards: [
-      { title: 'execelencia', text: 'Atendimento de primeira' },
-      { title: 'qualidade', text: 'Produtos premium' },
-      { title: 'pontualidade', text: 'Respeito ao seu tempo' }
+      { title: 'Execelencia', text: 'qualidade premium em cada serviço', icon: '/imgs/medalha.png' },
+      { title: 'Equipe Top', text: 'Barbeiros experientes e dedicados', icon: '/imgs/equipe.png' },
+      { title: 'Inovação', text: 'Tendencias e tecnicas modernas', icon: '/imgs/grafico.png' }
     ]
+  },
+
+  operatingSchedule: {
+    workingDays: ['Monday, tuesday, wednesday, thursday, friday,sunday'],
+    businessDays: {
+      open: '09:00 am',
+      close: '18:00 pm'
+    },
+    weekends: {
+      open: '09:00 am',
+      close: '14:00 pm'
+    }
+  },
+
+  contacts: {
+    phone: '11999999999',
+    whatsapp: '11999999999',
+    email: 'contato@barbearia.com',
+  },
+
+  address: {
+    street: 'Avenida Paulista',
+    number: '1000',
+    city: 'São Paulo',
+    state: 'SP',
+    cep: '01310-100'
   },
 
   services: [
@@ -56,15 +84,75 @@ export const barbershopMock = {
       mostPopular: false
     },
   ],
+};
 
-  schedule: {
-    workingDays: [1, 2, 3, 4, 5, 6],
-    openTime: '09:00',
-    closeTime: '19:00',
-    blockedTimes: [
-      { date: '2026-01-15', time: '14:00' }
-    ]
-  },
+
+
+
+// dados relacionados aos clientes
+export const ClientsData: ClientsDataType = {
+  clients: [
+    {
+      id: 'c1',
+      name: 'João Silva',
+      phone: '11988886666',
+      appointmentsCount: 3
+    },
+    {
+      id: 'c2',
+      name: 'Pedro Santos',
+      phone: '11987775555',
+      appointmentsCount: 5
+    },
+    {
+      id: 'c3',
+      name: 'Carlos Oliveira',
+      phone: '11986664444',
+      appointmentsCount: 7
+    },
+    {
+      id: 'c4',
+      name: 'Lucas Ferreira',
+      phone: '11985553333',
+      appointmentsCount: 2
+    },
+    {
+      id: 'c5',
+      name: 'Diego Costa',
+      phone: '11984442222',
+      appointmentsCount: 4
+    },
+    {
+      id: 'c6',
+      name: 'Felipe Martins',
+      phone: '11983331111',
+      appointmentsCount: 6
+    },
+    {
+      id: 'c7',
+      name: 'André Souza',
+      phone: '11982229999',
+      appointmentsCount: 8
+    },
+    {
+      id: 'c8',
+      name: 'Rafael Gomes',
+      phone: '11981118888',
+      appointmentsCount: 3
+    },
+    {
+      id: 'c9',
+      name: 'Bruno Alves',
+      phone: '11980007777',
+      appointmentsCount: 5
+    },
+    {
+      id: 'c10',
+      name: 'Gustavo Mendes',
+      phone: '11979996666',
+      appointmentsCount: 4
+    }
+  ],
 
   reviews: [
     {
@@ -110,7 +198,7 @@ export const barbershopMock = {
       photo: '/imgs/avatar.jpg',
       rating: 4,
       comment: 'Ótima experiência. O profissional conhece as tendências atuais e adapta bem ao rosto do cliente.',
-      publicationDate: '2024-01-02'
+      publicationDate: '2025-01-02'
     },
     {
       id: 'r6',
@@ -121,33 +209,5 @@ export const barbershopMock = {
       comment: 'Voltei diversos times! Ambiente limpo, profissionais qualificados e resultado impecável sempre.',
       publicationDate: '2023-12-28'
     },
-  ],
-
-  clients: [
-    {
-      id: 'c1',
-      name: 'João',
-      phone: '11999999999',
-      appointmentsCount: 3
-    }
-  ],
-
-  contacts: {
-    contato: {
-      phone: '11999999999',
-      whatsapp: '11999999999',
-      email: 'contato@barbearia.com',
-    },
-    address: {
-      street: 'Avenida Paulista',
-      number: '1000',
-      city: 'São Paulo',
-      state: 'SP',
-      cep: '01310-100'
-    },
-    openingHours: {
-      weekdays: '09:00 - 19:00',
-      weekends: '10:00 - 16:00'
-    }
-  }
-};
+  ]
+}

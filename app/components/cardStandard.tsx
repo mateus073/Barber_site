@@ -1,6 +1,4 @@
-/*componente de card padrao
-apenas cria um card com formato e padding igual 
-*/
+/*componente de card padrao apenas cria um card com formato e padding igual */
 
 export const CardStandard = ({ children }: { children: React.ReactNode }) => {
     return (

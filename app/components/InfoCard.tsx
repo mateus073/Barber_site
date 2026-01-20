@@ -1,1 +1,0 @@
-// usado pra os 3 cards de info da barbearia

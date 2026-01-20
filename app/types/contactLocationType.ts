@@ -1,5 +1,5 @@
-// type com os dados que o componente de contato e localizaçao ira utilizar
-export type ContactsType = {
+// dados da sessao de cantato e localização da barbearia na pagina inicial
+export type ContactTLocationType = {
     contacts: {
         contato: {
             phone: string;

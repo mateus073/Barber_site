@@ -1,10 +1,10 @@
-import { Main } from "next/document";
-import { Home } from "./components/home";
+
+import { Home } from "./pages/home";
 
 
 const Page = () => {
   return (
-   <Home />
+    <Home />
   );
 };
 
