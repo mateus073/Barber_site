@@ -7,6 +7,8 @@ export const Button = ({
   color: 'laranja' | 'branco' | 'cinza';
   text: string;
 }) => {
+
+
   return (
     <button
       className={`

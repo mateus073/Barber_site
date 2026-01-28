@@ -1,6 +1,6 @@
 
+'use client'
 // pagina de main onde ficaram os componentes principais da pagina inicial
-
 import { barberShopData, ClientsData } from "../mocks/mock"
 import { BarberShopType } from "../types/BarberShopType"
 import { ClientsDataType } from "../types/ClientsDataType"
@@ -8,7 +8,6 @@ import { ContactTLocationType } from "../types/contactLocationType"
 import { HeaderDataType } from "../types/headerDataType"
 import { ReviewsDataType } from "../types/reviewsDataType"
 import { ReviewType } from "../types/reviewType"
-import { servicesDataType } from "../types/servicesDataType"
 import { WhoWeAreDataType } from "../types/whoWeAreDataType"
 import { ContactLocation } from "../components/contactLocation"
 import { Footer } from "../components/footer"
@@ -16,15 +15,21 @@ import { Header } from "../components/header"
 import { Reviews } from "../components/reviews"
 import { Services } from "../components/services"
 import { WhoWeAre } from "../components/whoWeAre"
+import { ServicesDataType } from "../types/servicesDataType"
 
-export const Home = () => {
+
+type Props = {
+    onNavigate: (Screen: 'home' | 'toAppointment') => void
+}
+
+export const Home = ({ onNavigate }: Props) => {
 
     const barberShop: BarberShopType = barberShopData
 
     const clients: ClientsDataType = ClientsData
 
     if (!barberShop || !clients) {
-       return <div className="p-10 text-center text-red-500">Erro ao carregar dados.</div>;
+        return <div className="p-10 text-center text-red-500">Erro ao carregar dados.</div>;
     }
 
     // FUNÇOES - FUNÇOES - FUNÇOES - FUNÇOES - FUNÇOES - FUNÇOES
@@ -63,9 +68,10 @@ export const Home = () => {
         cards: barberShop.about.infoCards
     }
 
-    
-    const servicesData: servicesDataType = {
-        servicesList: barberShop.services
+
+    const servicesData: ServicesDataType = {
+        servicesList: barberShop.services,
+        onNavigate: onNavigate
     }
 
 
@@ -74,7 +80,7 @@ export const Home = () => {
         averageRating: getAverageRating(clients.reviews),
         customersReturning: 85,
         ageBarber: getBarberAge(barberShop.createdAt),
-        reviews: clients.reviews.slice(0, 4) 
+        reviews: clients.reviews.slice(0, 4)
     }
 
 
@@ -99,11 +105,19 @@ export const Home = () => {
         }
     }
 
+
+    const ExibeJson = () => {
+
+    }
+
     return (
         <main className="flex flex-col">
             <Header headerData={headerData} />
             <WhoWeAre whoWeAreData={WhoWeAreData} />
-            <Services servicesData={servicesData} />
+            <Services 
+            servicesList={servicesData.servicesList} 
+            onNavigate={servicesData.onNavigate}
+            />
             <Reviews reviewData={reviewsData} />
             <ContactLocation contactLocationData={contactLocationData} />
             <Footer />

@@ -1,0 +1,102 @@
+{
+    "appointments": [
+    {
+      "id": 1,
+      "date": "2026-01-26",
+      "dayname": "Segunda-feira",
+      "hours": [
+        { "hour": "09:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "10:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "11:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "13:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "14:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "15:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "16:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "17:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "18:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "19:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" }
+      ]
+    },
+    {
+        "id": 2,
+      "date": "2026-01-27",
+      "dayname": "Terça-feira",
+      "hours": [
+        { "hour": "09:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "10:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "11:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "13:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "14:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "15:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "16:00", "nameCustomer": "", "service": "" , "value": 0, "contact": "" },
+        { "hour": "17:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "18:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "19:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" }
+      ]
+    },
+    {
+        "id": 3,
+      "date": "2026-01-28",
+      "dayname": "Quarta-feira",
+      "hours": [
+        { "hour": "09:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "10:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "11:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "13:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "14:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "15:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "16:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "17:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "18:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "19:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" }
+      ]
+    },
+    {
+        "id": 4,
+      "date": "2026-01-29",
+      "dayname": "Quinta-feira",
+      "hours": [
+        { "hour": "09:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "10:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "11:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "13:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "14:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "15:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "16:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "17:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "18:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "19:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" }
+      ]
+    },
+    {
+        "id": 5,
+      "date": "2026-01-30",
+      "dayname": "Sexta-feira",
+      "hours": [
+        { "hour": "09:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "10:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "11:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "13:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "14:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "15:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "16:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "17:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "18:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "19:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" }
+      ]
+    },
+    {
+      "id": 6,
+      "date": "2026-01-31",
+      "dayname": "Sábado",
+      "hours": [
+        { "hour": "09:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "10:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "11:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "12:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "13:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
+        { "hour": "14:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" }
+      ]
+    }
+  ]
+}
