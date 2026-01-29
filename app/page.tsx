@@ -19,8 +19,6 @@ const Page = () => {
       {screen === 'home' && <Home onNavigate={handleScreen} />}
       {screen === 'toAppointment' && <ToAppointments/>}
     </div>
-    
-    
   );
 };
 
