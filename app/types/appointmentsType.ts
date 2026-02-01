@@ -1,5 +1,8 @@
 // type pra o horario
 export type HourlyType = {
+    id: string
+    date: string
+    dayName: string
     hour: string
     nameCustomer: string
     service: string

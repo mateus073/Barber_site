@@ -15,7 +15,7 @@ export const ToAppointments = () => {
     //         console.log(res.data)
     //     });
     // }, [])
-
+ 
     return (
         <div className="w-full min-h-screen mx-auto px-6 flex flex-col items-center justify-center">
         <ChoseDay />

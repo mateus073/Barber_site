@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Home } from "./pages/home";
 import { ToAppointments } from "./pages/toAppointment";
+import { AppointmentProvider } from "./contexts/appointmentCtx";
 
 
 const Page = () => {
@@ -17,7 +18,12 @@ const Page = () => {
   return (
     <div className="h-full w-full">
       {screen === 'home' && <Home onNavigate={handleScreen} />}
-      {screen === 'toAppointment' && <ToAppointments/>}
+      
+      {screen === 'toAppointment' &&
+        <AppointmentProvider>
+          <ToAppointments />
+        </AppointmentProvider>
+      }
     </div>
   );
 };
