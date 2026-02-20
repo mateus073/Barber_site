@@ -1,17 +1,21 @@
-// compoente que exibe os dias disponiveis pra agendamento
-
 import { useContext, useEffect, useState } from "react"
 import { api } from "../axiosUrlBase/urlBaseAxios"
-import { AppoimentsType, HourlyType } from "../types/appointmentsType"
-import { ModalTime } from "./choseTime"
-import { Button } from "./button"
+import { AppoimentsType, DayShedule, HourlyType } from "../types/appointmentsType"
+import { ModalTime } from "../components/modalChoseTime"
+import { Button } from "../components/button"
 import { CtxAppointment } from "../contexts/appointmentCtx"
 
-export const ChoseDay = () => {
 
+type Props = {
+    onNavigate: (screen: 'home' | 'selectAppointmentDate' | 'confirmAppointment') => void
+}
+
+
+
+export const SelectAppointmentDate = ({ onNavigate }: Props) => {
     // state do modal de horarios
-    const [showModal, setShowModal] = useState(false)
-    const [choseDay, setChoseDay] = useState<null | HourlyType[]>(null)
+    const [showModal, setShowModal] = useState<boolean>(false)
+    const [choseDay, setChoseDay] = useState<HourlyType[]>([])
 
     // state do appointment recebido da api
     const [appointments, setAppointments] = useState<AppoimentsType>([])
@@ -20,25 +24,30 @@ export const ChoseDay = () => {
     const appointmentCtx = useContext(CtxAppointment)
 
 
-
     useEffect(() => {
         api.get('appointments').then((res) => {
             setAppointments(res.data)
-            console.log(res.data)
+            // console.log(res.data)
         })
+            .catch((err) => {
+                console.error('erro ao bucar agenda em choseDay', err)
+            })
     }, [])
 
 
-    // funcao que abre o modal e passa o dia escolhido
-    const hendleModal = (day: HourlyType[]) => {
-        if(day.length === 0) { return console.log('erro ao passar horários pro modal de horarios.')}
-        
-        setChoseDay(day)
-        setShowModal(!showModal)
+    // funcao que abre o modal e passa os horarios disponiveis do dia escolhido, e tambem seta os dados do dia escolhido no ctx
+    const hendleModal = (day: DayShedule) => {
+        if (!appointmentCtx) {
+            console.log('erro no uso do ctx em choseDay')
+            return
+        }
 
-        console.log(`meu context: ${appointmentCtx}`)
-        console.log(`dia escolhido: ${day}`)
+        appointmentCtx?.secondSetAppointment(day.id, day.date, day.dayname)
+
+        setChoseDay(day.hours)
+        setShowModal(true)
     }
+
 
     return (
         <div className="min-h-screen w-full flex flex-col items-center justify-center px-4 gap-12">
@@ -47,9 +56,9 @@ export const ChoseDay = () => {
             <ModalTime
                 hourly={choseDay || []}
                 showModal={showModal}
-                handleShowModal={() => setShowModal(!showModal)}
+                setShowModal={setShowModal}
+                onNavigate={onNavigate}
             />
-
 
             {/* HEADER */}
             <div className="text-center max-w-2xl mb-10">
@@ -58,7 +67,7 @@ export const ChoseDay = () => {
                 </span>
 
                 <h2 className="text-4xl font-bold text-white">
-                    Agende Seu <span className="text-[#F28705]">Horário</span>
+                    Agende Seu Horário para: <span className="text-[#F28705]">{appointmentCtx?.appointment?.hour.service}</span>
                 </h2>
             </div>
 
@@ -76,40 +85,21 @@ export const ChoseDay = () => {
               text-center
             "
             >
-                {appointments?.map((days) => (
+                {appointments?.map((day) => (
                     <div
-                        onClick={() => hendleModal(days.hours)}
-                        key={days.id}
-                        className="
-                  group
-                  relative
-                  w-full
-                  max-w-[280px]
-                  overflow-hidden
-                  rounded-2xl
-                  border border-white/10
-                  bg-gradient-to-br from-[#171717] to-[#0f0f0f]
-                  px-5
-                  py-6
-                  text-left
-                  shadow-md
-                  transition-all
-                  duration-300
-                  hover:border-[#F28705]
-                  hover:shadow-xl
-                  hover:-translate-y-1
-                  active:scale-95
-                ">
-
+                        onClick={() => hendleModal(day)}
+                        key={day.id}
+                        className="group relative w-full max-w-[280px] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#171717] to-[#0f0f0f] px-5 py-6 text-left shadow-md transition-all duration-300 hover:border-[#F28705] hover:shadow-xl hover:-translate-y-1 active:scale-95"
+                    >
                         <div className="absolute inset-x-0 top-0 h-1 bg-[#F28705] opacity-0 transition group-hover:opacity-100" />
 
                         <div className="flex flex-col gap-3">
                             <span className="text-xs font-medium uppercase tracking-wider text-gray-400">
-                                {days.date}
+                                {day.date}
                             </span>
 
                             <span className="text-lg font-semibold text-white">
-                                {days.dayname}
+                                {day.dayname}
                             </span>
 
                             <Button color="laranja" text="Escolher Horário" />
@@ -119,6 +109,4 @@ export const ChoseDay = () => {
             </div>
         </div>
     )
-
-
 }

@@ -1,15 +1,29 @@
 // compoentte referente a sessao de serviços
 'use client'
+import { useContext } from "react";
 import { servicesListType } from "../types/servicesDataType";
 import { Button } from "./button"
 import { CardStandard } from "./cardStandard";
+import { CtxAppointment } from "../contexts/appointmentCtx";
+
 
 export type ServicesProps = {
     servicesList: servicesListType
-    onNavigate: (screen: 'home' | 'toAppointment') => void;
+    onNavigate: (Screen: 'home' | 'selectAppointmentDate') => void;
   }
 
 export const Services = ({servicesList, onNavigate }: ServicesProps) => {
+
+    const AppointmentCtx = useContext(CtxAppointment)
+
+   
+    const onNavigateChoseService = (screen: 'home' | 'selectAppointmentDate', service: string, price: number) => {
+        AppointmentCtx?.firstSetAppointment(service, price)
+        
+        onNavigate(screen)
+    }
+
+
     return (
         <section className="w-full bg-black py-20 px-6">
             <div className="max-w-7xl mx-auto flex flex-col items-center gap-14">
@@ -74,7 +88,7 @@ export const Services = ({servicesList, onNavigate }: ServicesProps) => {
                                     </div>
 
                                     <button
-                                        onClick={() => onNavigate("toAppointment")}
+                                        onClick={() => onNavigateChoseService("selectAppointmentDate", service.title, service.price )}
                                         className="inline-flex items-center justify-center  rounded-md px-6 py-3  text-sm font-semibold transition-colors duration-200 bg-[#F28705] text-white hover:bg-[#d97706]"
                                     >
                                         Agendar
@@ -118,7 +132,7 @@ export const Services = ({servicesList, onNavigate }: ServicesProps) => {
                                         </div>
 
                                         <button
-                                            onClick={() => onNavigate("toAppointment")}
+                                            onClick={() => onNavigateChoseService("selectAppointmentDate", service.title, service.price )}
                                             className=" inline-flex items-center justify-center rounded-md px-6 py-3 text-sm font-semibold transition-colors duration-200 bg-[#1E1E1E] text-white hover:bg-[#F28705]"
                                             >
                                             Agendar

@@ -2,14 +2,15 @@
 
 import { useState } from "react";
 import { Home } from "./pages/home";
-import { ToAppointments } from "./pages/toAppointment";
 import { AppointmentProvider } from "./contexts/appointmentCtx";
+import { SelectAppointmentDate } from "./pages/selectAppointmentDate";
+import { ConfirmAppointment } from "./pages/confirmAppointment";
 
 
 const Page = () => {
+  type ScreenType = 'home' | 'selectAppointmentDate' | 'confirmAppointment'
+  
   const [screen, setScreen] = useState<ScreenType>('home')
-
-  type ScreenType = 'home' | 'toAppointment'
 
   const handleScreen = (currentScreen: ScreenType) => {
     setScreen(currentScreen)
@@ -17,13 +18,11 @@ const Page = () => {
 
   return (
     <div className="h-full w-full">
-      {screen === 'home' && <Home onNavigate={handleScreen} />}
-      
-      {screen === 'toAppointment' &&
-        <AppointmentProvider>
-          <ToAppointments />
-        </AppointmentProvider>
-      }
+      <AppointmentProvider>
+        {screen === 'home' && <Home onNavigate={handleScreen} />}
+        {screen === 'selectAppointmentDate' && <SelectAppointmentDate onNavigate={handleScreen} />}
+        {screen === 'confirmAppointment' && <ConfirmAppointment onNavigate={handleScreen} />}
+      </AppointmentProvider>
     </div>
   );
 };

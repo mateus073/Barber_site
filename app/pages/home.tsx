@@ -19,7 +19,7 @@ import { ServicesDataType } from "../types/servicesDataType"
 
 
 type Props = {
-    onNavigate: (Screen: 'home' | 'toAppointment') => void
+    onNavigate: (screen: 'home' | 'selectAppointmentDate' | 'confirmAppointment') => void
 }
 
 export const Home = ({ onNavigate }: Props) => {
@@ -106,9 +106,6 @@ export const Home = ({ onNavigate }: Props) => {
     }
 
 
-    const ExibeJson = () => {
-
-    }
 
     return (
         <main className="flex flex-col">
