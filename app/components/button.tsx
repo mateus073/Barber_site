@@ -1,5 +1,3 @@
-// componente padrao de botao
-
 export const Button = ({
   color,
   text

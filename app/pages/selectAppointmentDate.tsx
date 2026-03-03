@@ -4,109 +4,137 @@ import { AppoimentsType, DayShedule, HourlyType } from "../types/appointmentsTyp
 import { ModalTime } from "../components/modalChoseTime"
 import { Button } from "../components/button"
 import { CtxAppointment } from "../contexts/appointmentCtx"
-
+import { Footer } from "../components/footer"
 
 type Props = {
-    onNavigate: (screen: 'home' | 'selectAppointmentDate' | 'confirmAppointment') => void
+  onNavigate: (screen: 'home' | 'selectAppointmentDate' | 'confirmAppointment') => void
 }
 
-
-
 export const SelectAppointmentDate = ({ onNavigate }: Props) => {
-    // state do modal de horarios
-    const [showModal, setShowModal] = useState<boolean>(false)
-    const [choseDay, setChoseDay] = useState<HourlyType[]>([])
 
-    // state do appointment recebido da api
-    const [appointments, setAppointments] = useState<AppoimentsType>([])
+  const [showModal, setShowModal] = useState<boolean>(false)
+  const [choseDay, setChoseDay] = useState<HourlyType[]>([])
+  const [appointments, setAppointments] = useState<AppoimentsType>([])
 
-    // ctx do appointment
-    const appointmentCtx = useContext(CtxAppointment)
+  const appointmentCtx = useContext(CtxAppointment)
 
-
-    useEffect(() => {
-        api.get('appointments').then((res) => {
-            setAppointments(res.data)
-            // console.log(res.data)
-        })
-            .catch((err) => {
-                console.error('erro ao bucar agenda em choseDay', err)
-            })
-    }, [])
+// busca os dados de agendamento disponiveis na api e salva no estado
+  useEffect(() => {
+    api.get('appointments')
+      .then((res) => {
+        setAppointments(res.data)
+      })
+      .catch((err) => {
+        console.error('erro ao buscar agenda em choseDay', err)
+      })
+  }, [])
 
 
-    // funcao que abre o modal e passa os horarios disponiveis do dia escolhido, e tambem seta os dados do dia escolhido no ctx
-    const hendleModal = (day: DayShedule) => {
-        if (!appointmentCtx) {
-            console.log('erro no uso do ctx em choseDay')
-            return
-        }
-
-        appointmentCtx?.secondSetAppointment(day.id, day.date, day.dayname)
-
-        setChoseDay(day.hours)
-        setShowModal(true)
+// abre modal com os horarios disponiveis do dia escolhido, e salva no ctx os dados do dia escolhido
+  const hendleModal = (day: DayShedule) => {
+    if (!appointmentCtx) {
+      console.log('erro no uso do ctx em choseDay')
+      return
     }
 
+    appointmentCtx.dispatch({
+      type: 'setDay', 
+      payload: {
+        id: day.id,
+        date: day.date,
+        dayname: day.dayname
+      }
+    })
 
-    return (
-        <div className="min-h-screen w-full flex flex-col items-center justify-center px-4 gap-12">
+    setChoseDay(day.appointmentHour)
+    setShowModal(true)
+  }
 
-            {/* MODAL */}
-            <ModalTime
-                hourly={choseDay || []}
-                showModal={showModal}
-                setShowModal={setShowModal}
-                onNavigate={onNavigate}
-            />
 
-            {/* HEADER */}
-            <div className="text-center max-w-2xl mb-10">
-                <span className="inline-block w-fit rounded-full bg-[#F28705]/20 px-5 py-2 mb-6 text-lg border border-[#F28705] font-semibold text-[#F28705]">
-                    Agendamento de Horário
-                </span>
+//   fecha o modal, limpa os dados do ctx e volta para home
+  const onNavigateHome = () => {
+    if (!appointmentCtx) {
+      console.log('erro no uso do ctx em choseDay')
+      return
+    }
 
-                <h2 className="text-4xl font-bold text-white">
-                    Agende Seu Horário para: <span className="text-[#F28705]">{appointmentCtx?.appointment?.hour.service}</span>
-                </h2>
-            </div>
+    appointmentCtx.dispatch({
+      type: 'clear'
+    })
+    
+    setShowModal(false)
+    onNavigate('home')
+  }
 
-            {/* GRID DE DIAS */}
-            <div
-                className="
-              grid
-              w-full
-              max-w-7xl
-              grid-cols-1
-              sm:grid-cols-2
-              md:grid-cols-3
-              gap-6 sm:gap-8
-              justify-items-center
-              text-center
-            "
+
+  return (
+    <div className="min-h-screen w-full flex flex-col bg-[#0b0b0b]">
+      <div className="flex-1 flex flex-col items-center px-6 pt-10 pb-13 gap-16">
+
+        {/* MODAL que exibe os horários disponíveis do dia escolhido */}
+        <ModalTime
+          hourly={choseDay || []}
+          showModal={showModal}
+          setShowModal={setShowModal}
+          onNavigate={onNavigate}
+        />
+
+        <header className="w-full max-w-6xl mx-auto flex flex-col gap-8">
+          <div className="flex items-center justify-between">
+            <button
+              onClick={onNavigateHome}
+              className="w-10 h-10 flex items-center justify-center cursor-pointer"
             >
-                {appointments?.map((day) => (
-                    <div
-                        onClick={() => hendleModal(day)}
-                        key={day.id}
-                        className="group relative w-full max-w-[280px] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#171717] to-[#0f0f0f] px-5 py-6 text-left shadow-md transition-all duration-300 hover:border-[#F28705] hover:shadow-xl hover:-translate-y-1 active:scale-95"
-                    >
-                        <div className="absolute inset-x-0 top-0 h-1 bg-[#F28705] opacity-0 transition group-hover:opacity-100" />
+              <img
+                src="/imgs/home.png"
+                alt="Home"
+                className="w-full h-full object-contain"
+              />
+            </button>
+          </div>
 
-                        <div className="flex flex-col gap-3">
-                            <span className="text-xs font-medium uppercase tracking-wider text-gray-400">
-                                {day.date}
-                            </span>
+          <div className="text-center space-y-3">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
+              Agende seu horário para
+            </h2>
 
-                            <span className="text-lg font-semibold text-white">
-                                {day.dayname}
-                            </span>
+            <p className="text-xl md:text-2xl font-semibold text-[#F28705]">
+              {appointmentCtx?.appointment?.appointmentHour.service}
+            </p>
+          </div>
+        </header>
 
-                            <Button color="laranja" text="Escolher Horário" />
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </div>
-    )
+       
+        <main className="w-full flex flex-col items-center">
+          <section className="grid w-full max-w-7xl grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 justify-items-center">
+
+            {appointments?.map((day) => (
+              <div
+                key={day.id}
+                onClick={() => hendleModal(day)}
+                className="group relative w-full max-w-[280px] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#171717] to-[#0f0f0f] px-5 py-6 text-left shadow-md transition-all duration-300 hover:border-[#F28705] hover:shadow-xl hover:-translate-y-1 active:scale-95 cursor-pointer"
+              >
+                <div className="absolute inset-x-0 top-0 h-1 bg-[#F28705] opacity-0 transition group-hover:opacity-100" />
+
+                <div className="flex flex-col gap-3">
+                  <span className="text-xs font-medium uppercase tracking-wider text-gray-400">
+                    {day.date}
+                  </span>
+
+                  <span className="text-lg font-semibold text-white">
+                    {day.dayname}
+                  </span>
+
+                  <Button color="laranja" text="Escolher Horário" />
+                </div>
+              </div>
+            ))}
+          </section>
+        </main>
+      </div>
+
+      <Footer />
+
+    </div>
+  )
 }

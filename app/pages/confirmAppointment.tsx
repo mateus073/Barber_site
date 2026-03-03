@@ -3,14 +3,14 @@
 import { useContext, useState } from "react"
 import { CtxAppointment } from "../contexts/appointmentCtx"
 import { ConfirmModal } from "../components/modalFinish"
-
+import { Footer } from "../components/footer"
+import { on } from "node:events"
 
 type Props = {
     onNavigate: (screen: 'home' | 'selectAppointmentDate' | 'confirmAppointment') => void
 }
 
-// componente de finalizar o agendamento
-export const ConfirmAppointment = ({onNavigate}: Props) => {
+export const ConfirmAppointment = ({ onNavigate }: Props) => {
 
     const appointmentCtx = useContext(CtxAppointment)
 
@@ -18,94 +18,121 @@ export const ConfirmAppointment = ({onNavigate}: Props) => {
     const [phone, setPhone] = useState("")
     const [showModal, setShowModal] = useState(false)
 
-    
-    if (!appointmentCtx) {
+    if (!appointmentCtx || !appointmentCtx.appointment) {
         console.log('erro no uso do ctx em finishScheduling')
         return null
     }
 
-
     const handleConfirm = () => {
         const trimmedName = name.trim()
         const trimmedPhone = phone.trim()
-    
-        // Verifica campos vazios
+
         if (!trimmedName || !trimmedPhone) {
             alert('Preencha todos os campos.')
             return
         }
-    
-        // Nome mínimo 3 caracteres
+
         if (trimmedName.length < 3) {
             alert('Nome deve ter pelo menos 3 caracteres.')
             return
         }
-    
-        // Remove tudo que não for número
+
         const onlyNumbersPhone = trimmedPhone.replace(/\D/g, '')
-    
-        // Validação simples de telefone brasileiro (10 ou 11 dígitos)
+
         if (onlyNumbersPhone.length < 10 || onlyNumbersPhone.length > 11) {
             alert('Telefone inválido.')
             return
         }
-    
-        appointmentCtx?.fourthSetAppointment(trimmedName, onlyNumbersPhone)
+
+        appointmentCtx.dispatch({
+            type: 'setNameContact',
+            payload: {
+                nameCustomer: trimmedName,
+                contact: onlyNumbersPhone
+            }
+        })
         setShowModal(true)
     }
 
 
+
+    const onNavigateHome = () => {
+        appointmentCtx.dispatch({
+            type: 'clear'
+        })
+
+        setShowModal(false)
+        onNavigate('home')
+    }
+
     return (
-        
-        <div className="min-h-screen w-full flex flex-col items-center justify-center px-4 gap-12 ">
+        <div className="min-h-screen w-full flex flex-col bg-[#0b0b0b]">
 
-            {/* modal que exibe os dados do agendamento e pede a confirmacao do usuario */}
-            <ConfirmModal name={name} phone={phone} shoewModal={showModal} setShowModal={setShowModal} />
+            {/* Modal que exibe todos os dados do agendamento e envia*/}
+            <ConfirmModal
+                shoewModal={showModal}
+                setShowModal={setShowModal}
+            />
 
-            {/* HEADER */}
-            <div className="text-center max-w-2xl mb-10">
-                <span className="inline-block w-fit rounded-full bg-[#F28705]/20 px-5 py-2 mb-6 text-lg border border-[#F28705] font-semibold text-[#F28705]">
-                    Finalização do Agendamento
-                </span>
+            <div className="flex-1 flex flex-col items-center px-4 pt-16 gap-12">
+                <header className="w-full max-w-6xl mx-auto flex flex-col gap-6">
+                    <div className="flex items-center justify-between">
+                        <button
+                            onClick={onNavigateHome}
+                            className="w-10 h-10 flex items-center justify-center cursor-pointer"
+                            >
+                            <img
+                                src="/imgs/home.png"
+                                alt="Home"
+                                className="w-full h-full object-contain"
+                            />
+                        </button>
+                    </div>
+                    <div className="text-center space-y-3">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                            Finalize seu agendamento
+                        </h2>
+                    </div>
+                </header>
 
-                <h2 className="text-4xl font-bold text-white">
-                    Finalize Seu <span className="text-[#F28705]">Agendamento</span>
-                </h2>
+
+                <main className="flex flex-col items-center">
+                    <form
+                        onSubmit={(e) => {
+                            e.preventDefault()
+                            handleConfirm()
+                        }}
+                        className="flex flex-col gap-4 items-center"
+                    >
+                        <input
+                            type="text"
+                            placeholder="Seu nome"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            className="w-80 p-3 rounded-md bg-[#171717] text-white border border-white/10 outline-none focus:border-[#F28705]"
+                        />
+                        <input
+                            type="tel"
+                            placeholder="Seu telefone"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            className="w-80 p-3 rounded-md bg-[#171717] text-white border border-white/10 outline-none focus:border-[#F28705]"
+                        />
+                        <button
+                            type="submit"
+                            disabled={!name || !phone}
+                            className={`w-80 px-6 py-3 rounded-md font-semibold transition-all duration-200
+                                ${name && phone
+                                    ? "bg-[#F28705] text-white hover:bg-[#d97706]"
+                                    : "bg-gray-700 text-gray-400 cursor-not-allowed"
+                                }
+                            `}>
+                            Confirmar
+                        </button>
+                    </form>
+                </main>
             </div>
-
-            {/* FORM */}
-            <div className="flex flex-col gap-4 items-center">
-
-                <input
-                    type="text"
-                    placeholder="Seu nome"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    className="w-80 p-3 rounded-md bg-[#171717] text-white border border-white/10"
-                />
-
-                <input
-                    type="tel"
-                    placeholder="Seu telefone"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    className="w-80 p-3 rounded-md bg-[#171717] text-white border border-white/10"
-                />
-
-                <button
-                    onClick={handleConfirm}
-                    disabled={!name || !phone}
-                    className={`
-                        px-6 py-3 rounded-md font-semibold transition
-                        ${name && phone
-                            ? "bg-[#F28705] text-white hover:bg-[#d97706]"
-                            : "bg-gray-700 text-gray-400 cursor-not-allowed"}
-                    `}
-                >
-                    Confirmar
-                </button>
-            </div>
-
+            <Footer />
         </div>
     )
 }

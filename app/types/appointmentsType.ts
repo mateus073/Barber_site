@@ -1,8 +1,5 @@
 // type pra o horario
 export type HourlyType = {
-    id: string
-    date: string
-    dayName: string
     hour: string
     nameCustomer: string
     service: string
@@ -11,12 +8,12 @@ export type HourlyType = {
 }
 
 
-// type para o dia
+// type para o dia completo com os horarios disponiveis, e os dados do dia, como id, data e nome do dia da semana
 export type DayShedule = {
     id: number;
     date: string;
     dayname: string;
-    hours: HourlyType[]
+    appointmentHour: HourlyType[]
 }
 
 

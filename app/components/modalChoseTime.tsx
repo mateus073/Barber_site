@@ -16,7 +16,6 @@ type Props = {
 export const ModalTime = ({ hourly, showModal, setShowModal, onNavigate }: Props) => {
 
   const [selectedHour, setSelectedHour] = useState<string | null>(null)
-
   const ctx = useContext(CtxAppointment)
 
   // limpa o horario selecionado quando o modal for fechado
@@ -25,13 +24,22 @@ export const ModalTime = ({ hourly, showModal, setShowModal, onNavigate }: Props
     setSelectedHour(null)
   }, [showModal])
 
-  // fucao de efeito pra confima agendamento
+
+  
+  // envia o horario selecionado para o ctx, fecha o modal e exibe a tela de confirmacao de agendamento
   const handleSelectHour = () => {
     if(selectedHour === null || !ctx) { 
       alert('erro em selecionar horario ou ctx.')
       return
     }
-    ctx?.thirdSetAppointment(selectedHour)
+
+    ctx.dispatch({
+      type: 'setHour',
+      payload: {
+        hour: selectedHour
+      }
+    })
+
     setShowModal(false)
     onNavigate('confirmAppointment')
   }
@@ -94,7 +102,6 @@ export const ModalTime = ({ hourly, showModal, setShowModal, onNavigate }: Props
           })}
         </div>
 
-        {/* Footer (opcional) */}
         <div className="mt-8 flex justify-center w-full">
           <button
             disabled={!selectedHour}

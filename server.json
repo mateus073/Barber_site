@@ -1,101 +1,437 @@
 {
-    "appointments": [
+  "appointments": [
     {
-      "id": 1,
+      "id": "1",
       "date": "2026-01-26",
       "dayname": "Segunda-feira",
-      "hours": [
-        { "hour": "09:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "10:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "11:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "13:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "14:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "15:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "16:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "17:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "18:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "19:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" }
+      "appointmentHour": [
+        {
+          "hour": "09:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "10:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "11:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "13:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "14:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "nameCustomer": "dddddd",
+          "contact": "3333333333",
+          "service": "Corte de cabelo",
+          "value": 60,
+          "hour": "15:00"
+        },
+        {
+          "hour": "16:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "17:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "18:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "19:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        }
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "date": "2026-01-27",
       "dayname": "Terça-feira",
-      "hours": [
-        { "hour": "09:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "10:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "11:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "13:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "14:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "15:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "16:00", "nameCustomer": "", "service": "" , "value": 0, "contact": "" },
-        { "hour": "17:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "18:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "19:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" }
+      "appointmentHour": [
+        {
+          "hour": "09:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "nameCustomer": "jubileu mateus",
+          "contact": "75988012123",
+          "service": "Corte de cabelo + barba",
+          "value": 90,
+          "hour": "10:00"
+        },
+        {
+          "hour": "11:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "13:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "nameCustomer": "mateus marques",
+          "contact": "3393939393",
+          "service": "Barba Completa",
+          "value": 30,
+          "hour": "14:00"
+        },
+        {
+          "hour": "15:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "16:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "nameCustomer": "mateus marqeus da silva",
+          "contact": "3333333333",
+          "service": "Corte de cabelo + barba",
+          "value": 90,
+          "hour": "17:00"
+        },
+        {
+          "hour": "18:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "19:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        }
       ]
     },
     {
-        "id": 3,
+      "id": "3",
       "date": "2026-01-28",
       "dayname": "Quarta-feira",
-      "hours": [
-        { "hour": "09:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "10:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "11:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "13:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "14:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "15:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "16:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "17:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "18:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "19:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" }
+      "appointmentHour": [
+        {
+          "hour": "09:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "10:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "11:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "13:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "nameCustomer": "mateus marques",
+          "contact": "75988012123",
+          "service": "Barba Completa",
+          "value": 30,
+          "hour": "14:00"
+        },
+        {
+          "hour": "15:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "16:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "nameCustomer": "diego marques da silva",
+          "contact": "9393939393",
+          "service": "Corte de cabelo",
+          "value": 60,
+          "hour": "17:00"
+        },
+        {
+          "hour": "18:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "19:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        }
       ]
     },
     {
-      "id": 4,
+      "id": "4",
       "date": "2026-01-29",
       "dayname": "Quinta-feira",
-      "hours": [
-        { "hour": "09:00", "nameCustomer": "mateus", "service": "", "value": 0, "contact": "" },
-        { "hour": "10:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "11:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "13:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "14:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "15:00", "nameCustomer": "roberto", "service": "", "value": 0, "contact": "" },
-        { "hour": "16:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "17:00", "nameCustomer": "diego", "service": "", "value": 0, "contact": "" },
-        { "hour": "18:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "19:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" }
+      "appointmentHour": [
+        {
+          "hour": "09:00",
+          "nameCustomer": "mateus",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "10:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "11:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "13:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "14:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "15:00",
+          "nameCustomer": "roberto",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "16:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "17:00",
+          "nameCustomer": "diego",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "18:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "19:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        }
       ]
     },
     {
-      "id": 5,
+      "id": "5",
       "date": "2026-01-30",
       "dayname": "Sexta-feira",
-      "hours": [
-        { "hour": "09:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "10:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "11:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "13:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "14:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "15:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "16:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "17:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "18:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "19:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" }
+      "appointmentHour": [
+        {
+          "hour": "09:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "10:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "11:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "13:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "14:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "15:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "16:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "17:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "18:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "19:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        }
       ]
     },
     {
-      "id": 6,
+      "id": "6",
       "date": "2026-01-31",
       "dayname": "Sábado",
-      "hours": [
-        { "hour": "09:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "10:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "11:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "12:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "13:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" },
-        { "hour": "14:00", "nameCustomer": "", "service": "", "value": 0, "contact": "" }
+      "appointmentHour": [
+        {
+          "hour": "09:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "10:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "11:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "12:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "13:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        },
+        {
+          "hour": "14:00",
+          "nameCustomer": "",
+          "service": "",
+          "value": 0,
+          "contact": ""
+        }
       ]
     }
   ]

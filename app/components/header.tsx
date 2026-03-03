@@ -34,7 +34,7 @@ export const Header = ({ headerData }: Props) => {
           <Button color="laranja" text="Agendar horário" />
         </div>
 
-        {/* Métricas */}
+    
         <div className="mt-8 flex gap-8">
           <div className="flex flex-col">
             <span className="text-3xl font-bold text-[#F28705]">

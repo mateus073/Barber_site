@@ -1,4 +1,3 @@
-
 'use client'
 // pagina de main onde ficaram os componentes principais da pagina inicial
 import { barberShopData, ClientsData } from "../mocks/mock"
@@ -25,12 +24,12 @@ type Props = {
 export const Home = ({ onNavigate }: Props) => {
 
     const barberShop: BarberShopType = barberShopData
-
     const clients: ClientsDataType = ClientsData
 
     if (!barberShop || !clients) {
         return <div className="p-10 text-center text-red-500">Erro ao carregar dados.</div>;
     }
+
 
     // FUNÇOES - FUNÇOES - FUNÇOES - FUNÇOES - FUNÇOES - FUNÇOES
     const getBarberAge = (createdAt: string) => {
@@ -54,13 +53,12 @@ export const Home = ({ onNavigate }: Props) => {
     }
 
 
-    // DADOS - DADOS - DADOS - DADOS - DADOS - DADOS
+    //DADOS PASSADOS PARA COMPONENTES: 
     const headerData: HeaderDataType = {
         age: getBarberAge(barberShop.createdAt),
         customers: clients.clients.length,
         assessment: getAverageRating(clients.reviews)
     }
-
 
     const WhoWeAreData: WhoWeAreDataType = {
         title: barberShop.about.description.title,
@@ -68,12 +66,10 @@ export const Home = ({ onNavigate }: Props) => {
         cards: barberShop.about.infoCards
     }
 
-
     const servicesData: ServicesDataType = {
         servicesList: barberShop.services,
         onNavigate: onNavigate
     }
-
 
     const reviewsData: ReviewsDataType = {
         satisfiedCustomers: clients.reviews.length,
@@ -82,7 +78,6 @@ export const Home = ({ onNavigate }: Props) => {
         ageBarber: getBarberAge(barberShop.createdAt),
         reviews: clients.reviews.slice(0, 4)
     }
-
 
     const contactLocationData: ContactTLocationType = {
         contacts: {
