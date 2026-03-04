@@ -1,20 +1,9 @@
 
 import { ReactNode, createContext, useReducer, useState } from "react"
 import { AppointmentActionsType, appointmentReducer } from "../reducer/reducer"
+import { ctxAppointmentType } from "../types/ctxAppointmentType"
 
 
-type ctxAppointmentType = {
-    id: number
-    date: string
-    dayname: string
-    appointmentHour: {
-        hour: string
-        nameCustomer: string
-        service: string
-        value: number
-        contact: string
-    }
-}
 
 // objeto inicial do meu ctx, ou seja, o estado inicial do meu ctx, que é um obj vazio, sem dados, e que tem a mesma estrutura do meu AppointmentDayType
 const initialAppointment: ctxAppointmentType = {
@@ -34,7 +23,11 @@ const initialAppointment: ctxAppointmentType = {
 
 type AppointmentCtxData = {
     appointment: ctxAppointmentType,
-    dispatch: React.Dispatch<AppointmentActionsType>
+    addDataDay: (id: number, date: string, dayname: string) => void,
+    addDataHour: (hour: string) => void,
+    addDataNameContact: (nameCustomer: string, contact: string) => void,
+    addDataServicePrice: (service: string, price: number) => void,
+    clearData: () => void,
 }
 
 
@@ -94,13 +87,15 @@ export const AppointmentProvider = ({ children }: { children: ReactNode }) => {
     }
 
 
-
-
     return (
         <CtxAppointment.Provider value={
             {
                 appointment: appointment,
-                dispatch: dispatch
+                addDataDay,
+                addDataHour,
+                addDataNameContact,
+                addDataServicePrice,
+                clearData
             }
         }>
             {children}

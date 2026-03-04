@@ -7,17 +7,20 @@
 
 import { useContext } from "react"
 import { CtxAppointment } from "../contexts/appointmentCtx"
-import { HourlyType } from "../types/appointmentsType"
 import { api } from "../axiosUrlBase/urlBaseAxios"
+import { apiAppointmentType } from "../types/apiAppointmentType"
+import { barberShopData } from "../mocks/mock"
+import { ctxAppointmentType } from "../types/ctxAppointmentType"
 
 
 type Props = {
-  shoewModal: boolean
+  showModal: boolean
   setShowModal: (show: boolean) => void
+  onNavigate: (screen: 'home' | 'selectAppointmentDate' | 'confirmAppointment') => void
 }
 
 
-export const ConfirmModal = ({shoewModal, setShowModal }: Props) => {  
+export const ConfirmModal = ({showModal, setShowModal, onNavigate }: Props) => {  
   const appointmentCtx = useContext(CtxAppointment)
 
   if (!appointmentCtx || !appointmentCtx.appointment) {
@@ -25,51 +28,65 @@ export const ConfirmModal = ({shoewModal, setShowModal }: Props) => {
     return null
   }
 
-  /* acha o horario escolhido no ctx, 
-  pega os dados do agendamento, 
-  e envia pra api,
-   depois limpa o ctx e fecha o modal
-  */
-   const handleSendAppointment  = async () => {
-    if(!appointmentCtx.appointment) {
-      console.log('erro a usar ctx em modalFinish')
-      return
-    }
-    console.log('dados presentes no meu context', appointmentCtx.appointment)
+  // envia dados do agendamento para api
+   const SendAppointmentApi  = async () => {
+    const appointmentData = appointmentCtx.appointment // seleciona so os dados do ctx
+    console.log('dados presentes no meu context', appointmentData)
 
     try {
-      const res = await api.get(`appointments/${appointmentCtx.appointment.id}`);
+      const res = await api.get(`appointments/${appointmentData.id}`);
       console.log('resposta da api: ', res.data.appointmentHour);
       
-      const updateHour = res.data.appointmentHour.map((h: HourlyType) => {
-        if (h.hour === appointmentCtx.appointment?.appointmentHour.hour) {
+      // monta array de horarios atualizado pronto pra patch
+      const updateHour = buildUpdatedAppointmentHours(res.data.appointmentHour, appointmentData)
+      console.log('dados atualizados do horario escolhido', updateHour)
+
+      // atualiza o horario escolhido na api, enviando o array atualizado de horarios do dia escolhido, e mantendo os outros dados do agendamento inalterados
+      const resPatch = await api.patch(`appointments/${appointmentData.id}`, {
+        appointmentHour: updateHour
+      })
+     
+      sendMsgAppointmentWhats(appointmentData) // envia mensagem de confirmação do agendamento para o whatsapp da barbearia
+      
+      appointmentCtx.clearData()
+      setShowModal(false)
+      onNavigate('home')
+      console.log('resposta do patch', resPatch)
+    } 
+     catch (err) { 
+      console.error('erro ao buscar os horarios do dia escolhido', err)
+    }
+  }
+
+
+  // monta o array de horarios do dia escolhido, atualizando o horario escolhido com os dados do agendamento, e mantendo os outros horarios inalterados
+  const buildUpdatedAppointmentHours = (respApi: apiAppointmentType[], appointmentDataCtx: ctxAppointmentType) => {
+    const updateHour = respApi.map((h) => {
+        if (h.hour === appointmentDataCtx.appointmentHour.hour) {
           return {
-            nameCustomer: appointmentCtx.appointment.appointmentHour.nameCustomer,
-            contact: appointmentCtx.appointment.appointmentHour.contact,
-            service: appointmentCtx.appointment.appointmentHour.service,
-            value: appointmentCtx.appointment.appointmentHour.value,
-            hour: appointmentCtx.appointment.appointmentHour.hour
+            nameCustomer: appointmentDataCtx.appointmentHour.nameCustomer,
+            contact: appointmentDataCtx.appointmentHour.contact,
+            service: appointmentDataCtx.appointmentHour.service,
+            value: appointmentDataCtx.appointmentHour.value,
+            hour: appointmentDataCtx.appointmentHour.hour
           }
         } else {
            return h 
           }
       })
-
-      const resPatch = await api.patch(`appointments/${appointmentCtx.appointment.id}`, {
-        appointmentHour: updateHour
-      })
-
-      console.log('resposta do patch', resPatch)
-
-    } 
-    catch (err) { 
-      console.error('erro ao buscar os horarios do dia escolhido', err)
-    }
-      // appointmentCtx.clearAppointment()
-      setShowModal(false)
+      return updateHour
   }
 
-  if (!shoewModal) return null
+  // envia mensagem de confirmação do agendamento para o whatsapp da barbearia, com os dados do agendamento
+  const sendMsgAppointmentWhats = (appointmentData:ctxAppointmentType) => { 
+    const phoneBarber = barberShopData.contacts.whatsapp
+    const mensagem = `Olá, gostaria de confirmar meu agendamento para o dia ${appointmentData.date} às ${appointmentData.appointmentHour.hour}. Meu nome é ${appointmentData.appointmentHour.nameCustomer} e meu telefone é ${appointmentData.appointmentHour.contact}. O serviço escolhido foi ${appointmentData.appointmentHour.service} no valor de R$${appointmentData.appointmentHour.value}.00. Por favor, confirme meu agendamento. Obrigado!`
+    const url = `https://wa.me/${phoneBarber}?text=${encodeURIComponent(mensagem)}`
+    window.open(url, '_blank')
+  }
+
+
+  if (!showModal) return null
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -82,12 +99,9 @@ export const ConfirmModal = ({shoewModal, setShowModal }: Props) => {
 
       {/* Modal */}
       <div className="relative z-10 w-full max-w-md rounded-2xl bg-[#0B0B0B] p-6 shadow-2xl text-white">
-
         <h3 className="text-xl font-bold mb-6 text-center">
           Confirme seu Agendamento
         </h3>
-
-        {/* Dados do agendamento */}
         <div className="space-y-3 text-sm border border-white/10 rounded-xl p-4 bg-[#171717]">
 
           <div className="flex justify-between">
@@ -100,14 +114,11 @@ export const ConfirmModal = ({shoewModal, setShowModal }: Props) => {
           <div className="flex justify-between">
             <span className="text-gray-400">Valor:</span>
             <span>R$ {appointmentCtx.appointment?.appointmentHour.value}.00</span>
-
           </div>
-
 
           <div className="flex justify-between">
             <span className="text-gray-400">Data:</span>
             <span>{appointmentCtx.appointment?.date}</span>
-
           </div>
 
           <div className="flex justify-between">
@@ -129,12 +140,9 @@ export const ConfirmModal = ({shoewModal, setShowModal }: Props) => {
             <span className="text-gray-400">Telefone:</span>
             <span>{appointmentCtx.appointment.appointmentHour.contact}</span>
           </div>
-
         </div>
 
-        {/* Botões */}
         <div className="mt-6 flex justify-between gap-4">
-
           <button
             onClick={() => setShowModal(false)}
             className="flex-1 py-3 rounded-md bg-gray-700 hover:bg-gray-600 transition"
@@ -143,7 +151,7 @@ export const ConfirmModal = ({shoewModal, setShowModal }: Props) => {
           </button>
 
           <button
-            onClick={handleSendAppointment }
+            onClick={SendAppointmentApi}
             className="flex-1 py-3 rounded-md bg-[#F28705] hover:bg-[#d97706] transition font-semibold"
           >
             Enviar

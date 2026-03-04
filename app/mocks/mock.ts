@@ -33,8 +33,8 @@ export const barberShopData: BarberShopType = {
   },
 
   contacts: {
-    phone: '11999999999',
-    whatsapp: '11999999999',
+    phone: '5575988012123',
+    whatsapp: '5575988012123',
     email: 'contato@barbearia.com',
   },
 

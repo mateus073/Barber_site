@@ -1,3 +1,4 @@
+import { ctxAppointmentType } from "../types/ctxAppointmentType"
 
 type setServicePriceType = {
     type: 'setServicePrice',
@@ -40,19 +41,7 @@ export type AppointmentActionsType = setServicePriceType | setDayType | setHourT
 
 
 
-// type para os dados que serao passado para o reducer, ou seja, o estado do meu ctx
-type ctxAppointmentType = {
-    id: number
-    date: string
-    dayname: string
-    appointmentHour: {
-        hour: string
-        nameCustomer: string
-        service: string
-        value: number
-        contact: string
-    }
-}
+// 
 
 
 export const appointmentReducer = (appointmentData: ctxAppointmentType, action: AppointmentActionsType) => {

@@ -18,14 +18,7 @@ export const Services = ({servicesList, onNavigate }: ServicesProps) => {
 
    
     const onNavigateChoseService = (screen: 'home' | 'selectAppointmentDate', service: string, price: number) => {
-        AppointmentCtx?.dispatch({
-            type: 'setServicePrice',
-            payload: {
-                service: service,
-                price: price
-            }
-        })
-        
+        AppointmentCtx?.addDataServicePrice(service, price)
         onNavigate(screen)
     }
 

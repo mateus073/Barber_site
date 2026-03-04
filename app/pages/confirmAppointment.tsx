@@ -23,6 +23,7 @@ export const ConfirmAppointment = ({ onNavigate }: Props) => {
         return null
     }
 
+
     const handleConfirm = () => {
         const trimmedName = name.trim()
         const trimmedPhone = phone.trim()
@@ -44,23 +45,14 @@ export const ConfirmAppointment = ({ onNavigate }: Props) => {
             return
         }
 
-        appointmentCtx.dispatch({
-            type: 'setNameContact',
-            payload: {
-                nameCustomer: trimmedName,
-                contact: onlyNumbersPhone
-            }
-        })
+        appointmentCtx.addDataNameContact(trimmedName, trimmedPhone)
         setShowModal(true)
     }
 
 
 
     const onNavigateHome = () => {
-        appointmentCtx.dispatch({
-            type: 'clear'
-        })
-
+        appointmentCtx.clearData()
         setShowModal(false)
         onNavigate('home')
     }
@@ -70,7 +62,8 @@ export const ConfirmAppointment = ({ onNavigate }: Props) => {
 
             {/* Modal que exibe todos os dados do agendamento e envia*/}
             <ConfirmModal
-                shoewModal={showModal}
+                onNavigate={onNavigate}
+                showModal={showModal}
                 setShowModal={setShowModal}
             />
 

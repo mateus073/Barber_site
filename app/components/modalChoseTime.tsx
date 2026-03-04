@@ -33,13 +33,7 @@ export const ModalTime = ({ hourly, showModal, setShowModal, onNavigate }: Props
       return
     }
 
-    ctx.dispatch({
-      type: 'setHour',
-      payload: {
-        hour: selectedHour
-      }
-    })
-
+    ctx.addDataHour(selectedHour)
     setShowModal(false)
     onNavigate('confirmAppointment')
   }

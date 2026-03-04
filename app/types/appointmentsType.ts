@@ -17,5 +17,5 @@ export type DayShedule = {
 }
 
 
-// type final: array de dias 
-export type AppoimentsType = DayShedule[]
+// type final: array de agendamentos 
+export type AppoimentsType =DayShedule[]

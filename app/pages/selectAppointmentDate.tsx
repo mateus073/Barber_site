@@ -13,8 +13,10 @@ type Props = {
 export const SelectAppointmentDate = ({ onNavigate }: Props) => {
 
   const [showModal, setShowModal] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(true)
+  
   const [choseDay, setChoseDay] = useState<HourlyType[]>([])
-  const [appointments, setAppointments] = useState<AppoimentsType>([])
+  const [appointmentsApi, setAppointmentsApi] = useState<AppoimentsType>([])
 
   const appointmentCtx = useContext(CtxAppointment)
 
@@ -22,10 +24,15 @@ export const SelectAppointmentDate = ({ onNavigate }: Props) => {
   useEffect(() => {
     api.get('appointments')
       .then((res) => {
-        setAppointments(res.data)
+        setAppointmentsApi(res.data)
+        setLoading(false)
       })
       .catch((err) => {
         console.error('erro ao buscar agenda em choseDay', err)
+        setLoading(true)
+      }).finally(() => {
+        setLoading(false)
+        console.log('requisição finalizada, loading setado para false')
       })
   }, [])
 
@@ -37,15 +44,7 @@ export const SelectAppointmentDate = ({ onNavigate }: Props) => {
       return
     }
 
-    appointmentCtx.dispatch({
-      type: 'setDay', 
-      payload: {
-        id: day.id,
-        date: day.date,
-        dayname: day.dayname
-      }
-    })
-
+    appointmentCtx.addDataDay(day.id, day.date, day.dayname)
     setChoseDay(day.appointmentHour)
     setShowModal(true)
   }
@@ -58,14 +57,11 @@ export const SelectAppointmentDate = ({ onNavigate }: Props) => {
       return
     }
 
-    appointmentCtx.dispatch({
-      type: 'clear'
-    })
+      appointmentCtx.clearData()
     
     setShowModal(false)
     onNavigate('home')
   }
-
 
   return (
     <div className="min-h-screen w-full flex flex-col bg-[#0b0b0b]">
@@ -104,11 +100,15 @@ export const SelectAppointmentDate = ({ onNavigate }: Props) => {
           </div>
         </header>
 
-       
+       {loading ? (
+          <div className="flex items-center justify-center h-64">
+            <p className="text-white text-lg border border-white/10 rounded-md p-2 p-10">Carregando...</p>
+          </div>
+        ) : (
         <main className="w-full flex flex-col items-center">
           <section className="grid w-full max-w-7xl grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 justify-items-center">
 
-            {appointments?.map((day) => (
+            {appointmentsApi?.map((day) => (
               <div
                 key={day.id}
                 onClick={() => hendleModal(day)}
@@ -131,6 +131,7 @@ export const SelectAppointmentDate = ({ onNavigate }: Props) => {
             ))}
           </section>
         </main>
+        )}
       </div>
 
       <Footer />
