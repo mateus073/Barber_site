@@ -196,8 +196,8 @@ Confirme o agendamento e envie a solicitação para o WhatsApp do barbeiro.
 <table>
   <tr>
     <td align="center">
-      <a href="https://github.com/seu-usuario">
-        <img src="https://github.com/seu-usuario.png" width="100px;" alt="Sua foto"/><br>
+      <a href="https://github.com/mateus073">
+        <img src="public/imgs/eu.jpeg" width="100px;" alt="Sua foto"/><br>
         <sub><b>Seu Nome</b></sub>
       </a>
     </td>
