@@ -5,6 +5,9 @@ import { HourlyType } from "../types/appointmentsType";
 import { CtxAppointment } from "../contexts/appointmentCtx";
 
 
+// modal que e aberto no componente selectAppoimentDate
+  // -ele recebe os horios disponiveis pro dia clicado e exibe
+  // ao clicar em um horario e clicar no btn de cofirma ele joga pra proxima tela que seria o comp de confirAppoinment
 type Props = {
   hourly: HourlyType[];
   showModal: boolean;

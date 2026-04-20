@@ -1,3 +1,4 @@
+// comp padrao pra botao q pode ter 3 cores
 export const Button = ({
   color,
   text

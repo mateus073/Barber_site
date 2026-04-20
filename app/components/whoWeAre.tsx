@@ -1,4 +1,4 @@
-
+// sesao de home qeu mostra infos sobre a barbearia:
 import { WhoWeAreDataType} from "../types/whoWeAreDataType";
 
 

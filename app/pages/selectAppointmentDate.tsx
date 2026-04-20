@@ -1,3 +1,8 @@
+/*Esse componente é responsável por exibir os dias disponíveis para agendamento e permitir que o usuário escolha um dia para ver os horários.
+
+Ele faz isso buscando os dados da API, mostrando os dias na tela e, ao clicar em um dia, abre um modal com os horários disponíveis, além de salvar essa escolha no contexto global da aplicação.
+*/
+
 import { useContext, useEffect, useState } from "react"
 import { api } from "../axiosUrlBase/urlBaseAxios"
 import { AppoimentsType, DayShedule, HourlyType } from "../types/appointmentsType"

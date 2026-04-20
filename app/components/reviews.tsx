@@ -1,3 +1,4 @@
+// sessao de home que exibe os reviews dos clientes
 import { ReviewsDataType } from "../types/reviewsDataType"
 import { CardStandard } from "./cardStandard"
 

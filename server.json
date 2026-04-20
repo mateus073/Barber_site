@@ -139,11 +139,11 @@
           "hour": "17:00"
         },
         {
-          "hour": "18:00",
-          "nameCustomer": "",
-          "service": "",
-          "value": 0,
-          "contact": ""
+          "nameCustomer": "mateus marques",
+          "contact": "75988012123",
+          "service": "Barba Completa",
+          "value": 30,
+          "hour": "18:00"
         },
         {
           "hour": "19:00",
@@ -181,11 +181,11 @@
           "contact": ""
         },
         {
-          "hour": "13:00",
-          "nameCustomer": "",
-          "service": "",
-          "value": 0,
-          "contact": ""
+          "nameCustomer": "mateus marques da silva",
+          "contact": "75988012123",
+          "service": "Barba Completa",
+          "value": 30,
+          "hour": "13:00"
         },
         {
           "nameCustomer": "mateus marques",
@@ -251,11 +251,11 @@
           "contact": ""
         },
         {
-          "hour": "11:00",
-          "nameCustomer": "",
-          "service": "",
-          "value": 0,
-          "contact": ""
+          "nameCustomer": "matewus",
+          "contact": "44444444444",
+          "service": "Barba Completa",
+          "value": 30,
+          "hour": "11:00"
         },
         {
           "nameCustomer": "mateus marques",
@@ -293,11 +293,11 @@
           "contact": ""
         },
         {
-          "hour": "18:00",
-          "nameCustomer": "",
-          "service": "",
-          "value": 0,
-          "contact": ""
+          "nameCustomer": "lian manchado",
+          "contact": "12345678900",
+          "service": "Barba Completa",
+          "value": 30,
+          "hour": "18:00"
         },
         {
           "hour": "19:00",
@@ -434,5 +434,6 @@
         }
       ]
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

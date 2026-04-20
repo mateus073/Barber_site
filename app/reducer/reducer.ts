@@ -40,10 +40,6 @@ export type AppointmentActionsType = setServicePriceType | setDayType | setHourT
 
 
 
-
-// 
-
-
 export const appointmentReducer = (appointmentData: ctxAppointmentType, action: AppointmentActionsType) => {
     switch (action.type) {
         case 'setServicePrice':
