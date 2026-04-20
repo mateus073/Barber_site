@@ -198,7 +198,7 @@ Confirme o agendamento e envie a solicitação para o WhatsApp do barbeiro.
     <td align="center">
       <a href="https://github.com/mateus073">
         <img src="public/imgs/eu.jpeg" width="100px;" alt="Sua foto"/><br>
-        <sub><b>Seu Nome</b></sub>
+        <sub><b>Mateus Marques</b></sub>
       </a>
     </td>
   </tr>
