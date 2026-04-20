@@ -23,8 +23,8 @@
 <h2 id="layout">🎨 Layout</h2>
 
 <p align="center">
-    <img src="./assets/screenshot1.png" alt="Screenshot 1" width="400px">
-    <img src="./assets/screenshot2.png" alt="Screenshot 2" width="400px">
+    <img src="public/imgs/printTela01.png" alt="Screenshot 1" width="400px">
+    <img src="public/imgs/printTela02.png" alt="Screenshot 2" width="400px">
 </p>
 
 ---
