@@ -18,7 +18,6 @@
      <a href="URL_DO_PROJETO">📱 Ver Projeto</a>
 </p>
 
----
 
 <h2 id="layout">🎨 Layout</h2>
 
@@ -28,6 +27,7 @@
 </p>
 
 ---
+<br>
 
 <h2 id="sobre">💡 Sobre</h2>
 <h4> oque ele resolve </h4>
@@ -42,6 +42,7 @@ Além de ser um projeto prático para aprendizado, ele também foi pensado como 
 </p>
 
 ---
+<br>
 
 <h2 id="funcionalidades">⚡ Funcionalidades</h2>
 
@@ -53,6 +54,7 @@ Além de ser um projeto prático para aprendizado, ele também foi pensado como 
 - **Interface responsiva e adaptada para diferentes dispositivos**
 
 ---
+<br>
 
 <h2 id="tecnologias-utilizadas">💻 Tecnologias Utilizadas</h2>
 
@@ -63,82 +65,7 @@ Além de ser um projeto prático para aprendizado, ele também foi pensado como 
 - **TanStack Query (gerenciamento de dados e cache)**
 
 ---
-
-<h2 id="estrutura do projeto">⚡ Estrutura do projeto </h2>
-
-```
-
-app/
-  ├─ components/
-  │   ├─ Header, Footer, Button, CardStandard
-  │   │   # Componentes reutilizáveis da interface
-  │   │
-  │   ├─ WhoWeAre
-  │   │   # Seção da home com informações básicas sobre a barbearia
-  │   │
-  │   ├─ Services
-  │   │   # Seção da home para escolha do serviço (inicia o fluxo de agendamento)
-  │   │
-  │   ├─ Reviews
-  │   │   # Seção da home que exibe avaliações dos clientes
-  │   │
-  │   ├─ ContactLocation
-  │   │   # Seção da home com dados de contato e localização da barbearia
-  │   │
-  │   ├─ ModalChoseTime
-  │   │   # Modal de seleção de horários disponíveis para o dia escolhido.
-  │   │   # Salva o horário no contexto global e navega para confirmação.
-  │   │
-  │   └─ ModalFinish
-  │       # Modal final que exibe resumo do agendamento, envia dados para API,
-  │       # dispara confirmação via WhatsApp, limpa o estado e retorna à home.
-  │
-  ├─ contexts/
-  │   └─ AppointmentCtx
-  │       # Contexto global que gerencia o estado do agendamento (dia, horário,
-  │       # serviço e dados do cliente) usando useReducer. Disponibiliza funções
-  │       # para atualizar ou limpar informações de forma centralizada.
-  │
-  ├─ pages/
-  │   ├─ Home
-  │   │   # Página inicial que renderiza as principais seções do site.
-  │   │   # Processa dados dos mocks (idade do barbeiro, média de avaliações)
-  │   │   # e distribui para os componentes filhos.
-  │   │
-  │   ├─ SelectAppointmentDate
-  │   │   # Exibe dias disponíveis para agendamento. Ao selecionar um dia,
-  │   │   # abre modal com horários e salva escolha no contexto global.
-  │   │
-  │   └─ ConfirmAppointment
-  │       # Coleta e valida dados do cliente (nome e telefone).
-  │       # Exibe modal de confirmação final e permite resetar o agendamento.
-  │
-  ├─ mocks/
-  │   └─ mock
-  │       # Dados estáticos relacionados à barbearia
-  │
-  ├─ types/
-  │   └─ # Definições de tipos TypeScript utilizados no projeto
-  │
-  └─ reducer/
-      └─ reducer
-          # Gerencia atualizações do estado de agendamento de forma imutável.
-          # Processa ações (atualizar serviço, dia, horário, cliente) e
-          # permite resetar todos os dados quando necessário.
-
-public/
-  └─ imgs/
-      # Imagens utilizadas na aplicação
-
-server.json
-  # Base de dados simulada (JSON Server) contendo dias e horários disponíveis.
-  # Armazena informações de agendamentos (cliente, serviço, valor, contato)
-  # e identifica horários livres ou reservados.    
-```
-
-
-
----
+<br>
 
 <h2 id="como-usar">📚 Intruções iniciais de Uso</h2>
 
@@ -161,28 +88,198 @@ npm run server
 # 5. Inicie a aplicação
 npm run dev
 ```
+---
 
-<br>
+<h2 id="estrutura do projeto">⚡ Estrutura do Projeto</h2>
 
-<h3 id="instalação">⚙️ Como usar:</h3>
+### 📁 Árvore de Diretórios
 
-<h4>1. Passo 1</h4>
-Acesse a página inicial e escolha o serviço desejado.
-
-<h4>2. Passo 2</h4>
-Selecione uma data disponível para visualizar os horários.
-
-<h4>3. Passo 3</h4>
-Escolha um horário livre (os horários já ocupados estarão indisponíveis).
-
-<h4>4. Passo 4</h4>
-Preencha seus dados (nome e telefone) para continuar.
-
-<h4>5. Passo 5</h4>
-Confirme o agendamento e envie a solicitação para o WhatsApp do barbeiro.
+```
+barber-site/
+├── app/
+│   ├── page.tsx                      # Renderiza a página Home
+│   │
+│   ├── components/                   # 🎨 Componentes reutilizáveis
+│   │   ├── button.tsx                # Botão genérico
+│   │   ├── cardStandard.tsx          # Card padrão para serviços/avaliações
+│   │   ├── header.tsx                # Cabeçalho da aplicação
+│   │   ├── footer.tsx                # Rodapé com informações
+│   │   ├── whoWeAre.tsx              # Seção "Quem Somos"
+│   │   ├── services.tsx              # Seção de serviços (inicia agendamento)
+│   │   ├── reviews.tsx               # Seção de avaliações dos clientes
+│   │   ├── contactLocation.tsx       # Seção de contato e localização
+│   │   ├── modalChoseTime.tsx        # Modal de seleção de horários
+│   │   └── modalFinish.tsx           # Modal de confirmação final
+│   │
+│   ├── pages/                        # 📄 Páginas/Fluxo de agendamento
+│   │   ├── home.tsx                  # Home (renderiza componentes da landing)
+│   │   ├── selectAppointmentDate.tsx # Página de seleção de datas
+│   │   └── confirmAppointment.tsx    # Página de confirmação de dados
+│   │
+│   ├── contexts/                     # 🔗 Gerenciamento de estado global
+│   │   └── appointmentCtx.tsx        # Context + Provider de agendamento
+│   │
+│   ├── reducer/                      # 🔄 Lógica de redução de estado
+│   │   └── reducer.ts                # Ações: UPDATE_SERVICE, UPDATE_DATE, etc.
+│   │
+│   ├── types/                        # 📝 Definições TypeScript
+│   │   ├── appointmentsType.ts       # Interface de agendamentos
+│   │   ├── ctxAppointmentType.ts     # Interface do contexto
+│   │   ├── ClientType.ts             # Interface do cliente
+│   │   ├── ClientsDataType.ts        # Interface de dados do cliente
+│   │   ├── servicesType.ts           # Interface de serviços
+│   │   ├── reviewType.ts             # Interface de avaliações
+│   │   ├── BarberShopType.ts         # Interface da barbearia
+│   │   ├── headerDataType.ts         # Interface de dados do header
+│   │   └── [...outras types]         # Demais tipos específicos
+│   │
+│   ├── mocks/                        # 📊 Dados estáticos
+│   │   └── mock.ts                   # Dados da barbearia, avaliações, etc.
+│   │
+│   └── axiosUrlBase/                 # 🌐 Configuração de requisições
+│       └── urlBaseAxios.ts           # Instância e configuração Axios
+│
+├── public/
+│   └── imgs/                         # 🖼️ Imagens estáticas
+│
+├── server.json                       # 🗄️ Banco de dados (JSON Server)
+```
 
 ---
 
+### 🔄 Fluxo de Funcionamento
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        USUÁRIO NA HOME                          │
+│                   (Home Page - home.tsx)                        │
+└────────────┬────────────────────────────────────────────────────┘
+             │
+             ↓
+┌─────────────────────────────────────────────────────────────────┐
+│         1️⃣  NAVEGAÇÃO → SELEÇÃO DE SERVIÇO                      │
+│    Components: Services.tsx + Button.tsx + CardStandard.tsx     │
+│                                                                 │
+│  Ação: Usuário seleciona um serviço (ex: "Corte + Barba")       │
+│  Estado: SERVICE_UPDATE → Context (AppointmentCtx)             │
+└────────────┬────────────────────────────────────────────────────┘
+             │
+             ↓
+┌─────────────────────────────────────────────────────────────────┐
+│       2️⃣  NAVEGAÇÃO → SELEÇÃO DE DATA/HORÁRIO                   │
+│          (selectAppointmentDate.tsx)                            │
+│                                                                 │
+│  Ação: Exibe dias disponíveis do servidor (server.json)         │
+│  Requisição: axios GET /appointments → days list               │
+│  Estado: DATE_UPDATE → Context                                 │
+└────────────┬────────────────────────────────────────────────────┘
+             │
+             ↓
+┌─────────────────────────────────────────────────────────────────┐
+│     3️⃣  MODAL DE HORÁRIOS → SELEÇÃO DE HORÁRIO                  │
+│           (modalChoseTime.tsx)                                  │
+│                                                                 │
+│  Ação: Abre modal com horários do dia selecionado               │
+│  Filtro: Remove horários já ocupados                            │
+│  Estado: TIME_UPDATE → Context                                 │
+└────────────┬────────────────────────────────────────────────────┘
+             │
+             ↓
+┌─────────────────────────────────────────────────────────────────┐
+│    4️⃣  COLETA DE DADOS DO CLIENTE                               │
+│        (confirmAppointment.tsx)                                 │
+│                                                                 │
+│  Campos: Nome + Telefone                                        │
+│  Validação: Form validation (não vazio)                         │
+│  Estado: CLIENT_UPDATE → Context                               │
+└────────────┬────────────────────────────────────────────────────┘
+             │
+             ↓
+┌─────────────────────────────────────────────────────────────────┐
+│    5️⃣  MODAL DE CONFIRMAÇÃO FINAL                               │
+│          (modalFinish.tsx)                                      │
+│                                                                 │
+│  Exibe: Resumo completo do agendamento                          │
+│  Ações:                                                         │
+│    • POST /appointments → Salva agendamento no servidor         │
+│    • Envia mensagem WhatsApp via API                            │
+│    • RESET_STATE → Limpa contexto                              │
+│    • Navega de volta para Home                                  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### 🧠 Gerenciamento de Estado
+
+**Context & Reducer Pattern:**
+
+```typescript
+// Estado Global (AppointmentCtx)
+{
+  service: { name: string; price: number };
+  date: string;
+  time: string;
+  client: { name: string; phone: string };
+}
+
+// Ações (reducer.ts)
+UPDATE_SERVICE    → atualiza serviço selecionado
+UPDATE_DATE       → atualiza data escolhida
+UPDATE_TIME       → atualiza horário escolhido
+UPDATE_CLIENT     → atualiza dados do cliente
+RESET_STATE       → reseta tudo para o estado inicial
+```
+
+---
+
+### 📡 Integração com Backend
+
+| Endpoint | Método | Descrição |
+|----------|--------|-----------|
+| `/appointments` | GET | Lista dias e horários disponíveis |
+| `/appointments` | POST | Salva novo agendamento |
+| `/barbershop` | GET | Dados da barbearia (idade, avaliações) |
+| WhatsApp API | POST | Envia confirmação para barbeiro |
+
+---
+
+### 💡 Fluxo de Dados
+
+```
+Mock Data (mock.ts)
+    ↓
+Home Page → Distribui para Components
+    ↓
+Services Component → Usuário seleciona serviço
+    ↓
+Context (AppointmentCtx) → Armazena estado global
+    ↓
+SelectAppointmentDate → Busca dados do servidor (axios)
+    ↓
+ModalChoseTime → Filtra horários disponíveis
+    ↓
+ConfirmAppointment → Valida dados do cliente
+    ↓
+ModalFinish → POST dados + WhatsApp + RESET
+    ↓
+Volta para Home
+```
+
+---
+
+### 🎯 Componentes Críticos
+
+| Componente | Responsabilidade | Dependências |
+|-----------|------------------|--------------|
+| `AppointmentCtx` | Centralizar estado | `useReducer`, `reducer.ts` |
+| `modalChoseTime` | Filtrar horários livres | `server.json`, `axios`, `Context` |
+| `modalFinish` | Enviar dados finais | `axios`, `WhatsApp API`, `Context` |
+| `selectAppointmentDate` | Listar datas | `axios`, `server.json`, `Context` |
+
+
+---
+<br>
 
 
 <h2 id="status">🚀 Status do Projeto</h2>
